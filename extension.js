@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require("vscode");
-import got from "got";
+const { fetch } = require("@adobe/helix-fetch");
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
@@ -24,26 +24,26 @@ function activate(context) {
       let text = document.getText(
         new vscode.Range(new vscode.Position(0, 0), position)
       );
-      let data = await got
-        .post(baseurl + "/v1/engines/codegen/completions", {
-          json: {
-            prompt: text,
-            max_tokens: maxTokens,
-            temperature: 0.8,
-            top_k: 5,
-            top_p: 1.0,
-            repetition_penalty: 1.1,
-            use_faster: true,
-            stream: false,
-          },
-        })
-        .json();
-      let choices = JSON.parse(String(data)).choices;
-      let items = [];
-      for (let choice of choices) {
-        let item = new vscode.InlineCompletionItem(choice.text);
-        items.push(item);
+      if (text.length == 0) {
+        return;
       }
+      let data = await fetch(baseurl + "/v1/engines/codegen/completions", {
+        method: "POST",
+        body: {
+          prompt: text,
+          max_tokens: maxTokens,
+          temperature: 0.8,
+          top_k: 5,
+          top_p: 1.0,
+          repetition_penalty: 1.1,
+          use_faster: true,
+          stream: false,
+        },
+      });
+      const jsonData = await data.json();
+      const items = jsonData.choices.map((choice) => {
+        return new vscode.InlineCompletionItem(choice.text);
+      });
       return items;
     },
   });
