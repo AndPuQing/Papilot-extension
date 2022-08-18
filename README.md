@@ -1,41 +1,25 @@
 # Papilot
 
-An open-source GitHub Copilot server based PaddleNLP
+Vscode extension for [Papilot](https://github.com/AndPuQing/Papilot)
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- Open Source
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Before using, you should provide a codegen service URL, or start the [Papilot service](https://github.com/AndPuQing/Papilot).
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-- `myExtension.enable`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
+- `papilot.url`: The URL of the codegen service.
+- `papilot.maxTokens`: The maximum number of tokens to generate.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 0.0.1
-
-- initial release
+- For machines with only CPU, try to reduce the size of maxTokens, otherwise it will seriously affect the experience.
 
 ---
 

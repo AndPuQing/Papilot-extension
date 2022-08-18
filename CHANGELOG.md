@@ -1,9 +1,5 @@
 # Change Log
 
-All notable changes to the "papilot" extension will be documented in this file.
+## 0.0.1 - August 18, 2022
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+- initial release
