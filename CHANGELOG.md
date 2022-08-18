@@ -13,3 +13,7 @@
 
 - remove vsce from package.json
 - add @adobe/helix-fetch to package.json
+
+## 0.0.4 - August 18, 2022
+
+- fix helix-fetch dependency
