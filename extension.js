@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require("vscode");
-const { fetch } = require("@adobe/helix-fetch");
+const { fetch, AbortController } = require("@adobe/helix-fetch");
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
@@ -21,6 +21,12 @@ function activate(context) {
   // The commandId parameter must match the command field in package.json
   let code = vscode.languages.registerInlineCompletionItemProvider("python", {
     async provideInlineCompletionItems(document, position, context, token) {
+      let abortController = new AbortController();
+      token.onCancellationRequested(() => {
+        console.log("cancelled");
+        abortController.abort();
+      });
+
       let text = document.getText(
         new vscode.Range(new vscode.Position(0, 0), position)
       );
@@ -28,6 +34,7 @@ function activate(context) {
         return;
       }
       let data = await fetch(baseurl + "/v1/engines/codegen/completions", {
+        signal: abortController.signal,
         method: "POST",
         body: {
           prompt: text,

@@ -17,3 +17,7 @@
 ## 0.0.4 - August 18, 2022
 
 - fix helix-fetch dependency
+
+## 0.0.5 - August 18, 2022
+
+- add abortController

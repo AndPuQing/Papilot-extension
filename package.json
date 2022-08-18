@@ -2,7 +2,7 @@
   "name": "papilot",
   "displayName": "Papilot",
   "description": "An open source programming assistant",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "PuQing",
   "engines": {
     "vscode": "^1.70.0"
