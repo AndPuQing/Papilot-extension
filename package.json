@@ -3,6 +3,7 @@
   "displayName": "Papilot",
   "description": "",
   "version": "0.0.1",
+  "publisher": "PuQing",
   "engines": {
     "vscode": "^1.70.0"
   },
@@ -47,5 +48,10 @@
     "mocha": "^10.0.0",
     "typescript": "^4.7.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vsce": "^2.10.0"
+  },
+  "vsce": {
+    "yarn": true
+  }
 }
