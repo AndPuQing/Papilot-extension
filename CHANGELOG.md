@@ -8,3 +8,8 @@
 
 - add extension icon
 - Perfect readme
+
+## 0.0.3 - August 18, 2022
+
+- remove vsce from package.json
+- add @adobe/helix-fetch to package.json
